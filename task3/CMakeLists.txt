@@ -12,7 +12,9 @@ endif()
 project(SimpleLibrary)
 include_directories(include)
 
-install(FILES ${SimpleLibrary_SOURCE_DIR}/include/buffer.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
+install(TARGETS Main DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+install(TARGETS MainLib DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include FILES_MATCHING PATTERN "*.h")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/lib)
