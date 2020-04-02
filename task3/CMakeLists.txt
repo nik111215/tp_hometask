@@ -12,9 +12,8 @@ endif()
 project(SimpleLibrary)
 include_directories(include)
 
-install(TARGETS Main DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-install(TARGETS MainLib DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include FILES_MATCHING PATTERN "*.h")
+install(FILES ${SimpleLibrary_SOURCE_DIR}/include/buffer.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
+
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${SimpleLibrary_SOURCE_DIR}/lib)
@@ -23,3 +22,7 @@ add_executable(Main main.cpp)
 add_executable(MainLib main_lib.cpp)
 
 target_link_libraries(MainLib buffer)
+
+IF (ARM_BUILD)
+INSTALL(TARGETS Main MainLib DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+endif()
