@@ -3,7 +3,7 @@ python_exe=$1
 check_pip=$(${python_exe} -m pip)
 error_code=$?
 
-if [ $error_code -ne 0 ]
+if [ $error_code -ne 0 ] 
 then
     echo "Installing pip"
     wget https://bootstrap.pypa.io/get-pip.py -O /tmp/get-pip.py
